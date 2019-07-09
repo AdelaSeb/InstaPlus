@@ -1,14 +1,13 @@
-const express =  require('express');
+const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const users= require('./routes/api/users');
-const profile = require ('./routes/api/profile');
-const posts = require('./routes/api/posts');
-
+//const profile = require ('./routes/api/profile');
+//const posts = require('./routes/api/posts');
 
 //Db config
-const db = require ('./config/keys').mongoURI;
-mongoose.connect(db).then(() => console.log('MongoDb connected')).catch(err => console.log(err));
+const db=require('./config/keys').mongoURI;
+mongoose.connect(db).then(()=>console.log('MongoDb connected')).catch(err =>console.log(err));
 
 
 app.get('/', (req, res) => res.send('Hello'));
@@ -18,3 +17,7 @@ app.use('/api/users', users);
 
 const port = 7000;
 app.listen(port,()=>console.log(`server is running on port ${port}`));
+
+
+
+
