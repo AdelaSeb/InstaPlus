@@ -26,7 +26,7 @@ app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 
-const port = 7009;
+const port = 7011;
 app.listen(port,()=>console.log(`server is running on port ${port}`));
 
 

@@ -16,12 +16,16 @@ module.exports = function validateProfileInput(data) {
     errors.handle = 'Profile handle is required';
   }
 
-  if (Validator.isEmpty(data.status)) {
-    errors.status = 'Status field is required';
+  if (Validator.isEmpty(data.numOfPosts)) {
+    errors.status = 'numOfPosts field is required';
   }
 
-  if (Validator.isEmpty(data.skills)) {
-    errors.skills = 'Skills field is required';
+  if (Validator.isEmpty(data.followers)) {
+    errors.skills = 'Followers field is required';
+  }
+
+  if (Validator.isEmpty(data.following)) {
+    errors.skills = 'Following field is required';
   }
 
   if (!isEmpty(data.website)) {
@@ -30,35 +34,35 @@ module.exports = function validateProfileInput(data) {
     }
   }
 
-  if (!isEmpty(data.youtube)) {
-    if (!Validator.isURL(data.youtube)) {
-      errors.youtube = 'Not a valid URL';
-    }
-  }
+  // if (!isEmpty(data.youtube)) {
+  //   if (!Validator.isURL(data.youtube)) {
+  //     errors.youtube = 'Not a valid URL';
+  //   }
+  // }
 
-  if (!isEmpty(data.twitter)) {
-    if (!Validator.isURL(data.twitter)) {
-      errors.twitter = 'Not a valid URL';
-    }
-  }
+  // if (!isEmpty(data.twitter)) {
+  //   if (!Validator.isURL(data.twitter)) {
+  //     errors.twitter = 'Not a valid URL';
+  //   }
+  // }
 
-  if (!isEmpty(data.facebook)) {
-    if (!Validator.isURL(data.facebook)) {
-      errors.facebook = 'Not a valid URL';
-    }
-  }
+  // if (!isEmpty(data.facebook)) {
+  //   if (!Validator.isURL(data.facebook)) {
+  //     errors.facebook = 'Not a valid URL';
+  //   }
+  // }
 
-  if (!isEmpty(data.linkedin)) {
-    if (!Validator.isURL(data.linkedin)) {
-      errors.linkedin = 'Not a valid URL';
-    }
-  }
+  // if (!isEmpty(data.linkedin)) {
+  //   if (!Validator.isURL(data.linkedin)) {
+  //     errors.linkedin = 'Not a valid URL';
+  //   }
+  // }
 
-  if (!isEmpty(data.instagram)) {
-    if (!Validator.isURL(data.instagram)) {
-      errors.instagram = 'Not a valid URL';
-    }
-  }
+  // if (!isEmpty(data.instagram)) {
+  //   if (!Validator.isURL(data.instagram)) {
+  //     errors.instagram = 'Not a valid URL';
+  //   }
+  // }
 
   return {
     errors,
