@@ -7,7 +7,9 @@ const passport = require('passport');
 const Post = require('../../models/Post');
 // Profile model
 const Profile = require('../../models/Profile');
-
+// Validation
+const validatePostInput = require('../../validation/post');
+const validateCommentInput = require('../../validation/comments');
 
 
 // @route   GET api/posts
@@ -48,7 +50,7 @@ router.post(
     '/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-      /** 
+       
         const { errors, isValid } = validatePostInput(req.body);
   
       // Check Validation
@@ -56,7 +58,7 @@ router.post(
         // If any errors, send 400 with errors object
         return res.status(400).json(errors);
       }
-      **/
+      
   
       const newPost = new Post({
         photo: req.body.photo,
@@ -172,21 +174,20 @@ router.post(
     '/comment/:id',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-        /**
-      const { errors, isValid } = validatePostInput(req.body);
+        
+      const { errors, isValid } = validateCommentInput(req.body);
   
       // Check Validation
       if (!isValid) {
         // If any errors, send 400 with errors object
         return res.status(400).json(errors);
       }
-      */
-
+      
       Post.findById(req.params.id)
         .then(post => {
           const newComment = {
             text: req.body.text,
-            name: req.body.name,
+            name: req.body.name, 
             avatar: req.body.avatar,
             user: req.user.id
           };
@@ -221,6 +222,15 @@ router.delete(
               .status(404)
               .json({ commentnotexists: 'Comment does not exist' });
           }
+
+          //Check if user is authorized to delete comment
+          // && (post.comments.filter(comment => comment._id.toString() === req.params.comment_id).length > 0).filter(comm => comment.user.toString() !== req.user.id)
+           if (post.user.toString() !== req.user.id) {
+              return res
+              .status(404)
+              .json({ unauthorized: 'User not authorized to delete the comment' });
+          }
+          
   
           // Get remove index
           const removeIndex = post.comments
