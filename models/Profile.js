@@ -28,11 +28,7 @@ const ProfileSchema = new Schema({
             ref: 'users'
           }
         }
- ]
-  ,
-  numOfPosts:{
-      type:Number
-  },
+ ],
   website: {
     type: String
   },

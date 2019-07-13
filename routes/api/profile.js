@@ -163,39 +163,97 @@ router.delete(
   }
 );
 
-// @route   POST api/profile
+// @route   POST api/profile/followers/:id
 // @desc    Create follow users
 // @access  Private
 router.post(
-    '/',
-    passport.authenticate('jwt', { session: false }),
-    (req, res) => {
-      const { errors, isValid } = validateProfileInput(req.body);
-      // Check Validation
-      if (!isValid) {
-        // Return any errors with 400 status
-        return res.status(400).json(errors);
-      }
+  '/followers/:id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+     
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        if (
+                    profile.followers.filter(follower => follower.user.toString() === req.params.curr_user)
+                      .length > 0
+                  ) {
+                    return res
+                      .status(400)
+                      .json({ alreadyAFollower: 'User is already a follower' });
+                  }
+        else{
+          profile.followers.unshift({ user: req.params.curr_user });
+          profile.save().then(profile => res.json(profile));
+        }
+      });
 
-    // Get fields
-    const profileFields = {};
-    profileFields.user = req.user.id;
-    if (req.body.handle) profileFields.handle = req.body.handle;
-    if (req.body.website) profileFields.website = req.body.website;
-    if (req.body.bio) profileFields.bio = req.body.bio;
-    if (req.body.numOfPosts) profileFields.numOfPosts=req.body.numOfPosts;
-    if (req.body.following) profileFields.following = req.body.following;
-    if (req.body.followers) profileFields.followers = req.body.followers;
-
-    
-
-    }
+    Profile.findOne({user:req.params.curr_user})
+     .then( profile2 => {
+            if(profile2.following.filter(following=>following.user.toString()===req.user.id).length>0)
+            {
+              return res
+              .status(400)
+                      .json({ alreadyfollowing: 'You are already following' });
+            }
+            else{
+              profile2.followering.unshift({ user: req.user.id });
+              profile2.save().then(profile2 => res.json(profile2));
+            }
+     }) ;
+   }
 );
 
 
-
-// @route   POST api/profile
+// @route   POST api/posts/unfollowers/:id
 // @desc    Delete follow users
 // @access  Private
+router.post(
+  '/unfollowers/:id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id }).then(profile => {
+      if(profile.followers.filter(follower => follower.user.toString() === req.user.id).length===0)
+      {
+        return res
+              .status(400)
+              .json({ notliked: 'The user has not yet followed you.' });
+      }
+      else{
+           const removeIndex = profile.followers
+            .map(item => item.user.toString())
+            .indexOf(req.params.curr_user);
+
+          // Splice out of array
+          profile.followers.splice(removeIndex, 1);
+
+          // Save
+          profile.save().then(profile => res.json(profile));
+      }})
+
+      Profile.findOne({user:req.params.curr_user}).then(
+        profile2=>{
+        if(profile2.following.filter(following => following.user.toString() === req.user.id).length===0)
+        {
+        return res
+              .status(400)
+              .json({ notfollowed: 'The user has not yet followed you.' });
+       }
+        else{
+           const removeIndex = profile2.following
+            .map(item => item.user.toString())
+            .indexOf(req.user.id);
+
+          // Splice out of array
+          profile2.following.splice(removeIndex, 1);
+
+          // Save
+          profile2.save().then(profile2 => res.json(profile2));
+      }
+        }
+      ) 
+    
+  }
+);  
+
 
 module.exports = router;
