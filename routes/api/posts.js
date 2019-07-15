@@ -42,6 +42,32 @@ router.get('/:id', (req, res) => {
   });
 
 
+// @route   GET api/posts/home
+// @desc    Get posts of all folks a user is following
+// @access  Public
+/** 
+ router.get('/', 
+  passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+      Profile.findOne({ user: req.user.id })
+      .then(profile => {
+          var followingList = profile.following;
+          var posts = [];
+          for (var i = 0; i < followingList.length; i++){
+            Post.find({ user: followingList.id })
+            .sort({ date: -1 })
+            .then(
+              post => posts.push(post))
+            .catch(err => res.status(404).json({ nopostsfound: 'No posts found' }));
+          }
+
+          return res.json(posts);
+      });
+    }
+);
+*/
+
+
 
 // @route   POST api/posts
 // @desc    Create post
