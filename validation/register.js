@@ -14,7 +14,7 @@ module.exports = function validateRegisterInput(data){
         errors.name = 'Name must be between 2 and 30 characters';
     }
     if (!validator.isLength(data.lastname, {min: 2, max: 30})) {
-        errors.name = 'Last name must be between 2 and 30 characters';
+        errors.lastname = 'Last name must be between 2 and 30 characters';
     }
     if (!validator.isLength(data.password, {min: 6, max: 30})) {
         errors.password = 'Password must be between 6 and 30 characters';
@@ -25,7 +25,7 @@ module.exports = function validateRegisterInput(data){
         errors.name = 'Name field is required';
     }
     if (validator.isEmpty(data.lastname)) {
-        errors.name = 'Last name field is required';
+        errors.lastname = 'Last name field is required';
     }
     if (validator.isEmpty(data.email)) {
         errors.email = 'Email field is required';
