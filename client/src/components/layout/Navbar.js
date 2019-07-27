@@ -1,28 +1,35 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+
 
 class Navbar extends Component {
     render() {
         return (
-            <nav className="navbar navbar-expand-sm navbar-light bg-light mb-4">
+            <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
                 <div className="container">
-                    <div className="row">
-                        <div className="col-md-12 text-center">
-                            <h1 className="display-3 mb-4">InstaPlus</h1>
-                            <form className="form-inline">
-                                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                                <button className="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-                            </form>
-                                <div className="btn btn-lg btn-dark mr-2">
-                                Sign Up
-                                </div>
-                                <div className="btn btn-lg btn-light">
-                                Login
-                                </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+                <a className="navbar-brand" href="landing.html">InstaPlus</a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+
+                <div className="collapse navbar-collapse" id="mobile-nav">
+                    <ul className="navbar-nav mr-auto">
+                    <li className="nav-item">
+                        <a className="nav-link" href="profiles.html"> Upload photo
+                        </a>
+                    </li>
+                    </ul>
+
+                    <ul className="navbar-nav ml-auto">
+                    <li className="nav-item">
+                        <a className="nav-link" href="register.html">Sign Up</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="login.html">Login</a>
+                    </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
         )
     }
 };

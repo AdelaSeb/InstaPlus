@@ -24,9 +24,9 @@ module.exports = function validateRegisterInput(data){
     if (validator.isEmpty(data.name)) {
         errors.name = 'Name field is required';
     }
-    if (validator.isEmpty(data.lastname)) {
-        errors.lastname = 'Last name field is required';
-    }
+    // if (validator.isEmpty(data.lastname)) {
+    //     errors.lastname = 'Last name field is required';
+    // }
     if (validator.isEmpty(data.email)) {
         errors.email = 'Email field is required';
     }
