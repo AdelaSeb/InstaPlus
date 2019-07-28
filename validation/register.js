@@ -5,17 +5,17 @@ module.exports = function validateRegisterInput(data){
     let errors = {};
 
     data.name = !isEmpty(data.name)? data.name : '';
-    data.lastname = !isEmpty(data.lastname)? data.lastname:'',
+    // data.lastname = !isEmpty(data.lastname)? data.lastname:'',
     data.email = !isEmpty(data.email)? data.email : '';
     data.password = !isEmpty(data.password)? data.password : '';
-    data.password2 = !isEmpty(data.password2)? data.password : '';
+    data.password2 = !isEmpty(data.password2)? data.password2 : '';
 
     if (!validator.isLength(data.name, {min: 2, max: 30})) {
         errors.name = 'Name must be between 2 and 30 characters';
     }
-    if (!validator.isLength(data.lastname, {min: 2, max: 30})) {
-        errors.lastname = 'Last name must be between 2 and 30 characters';
-    }
+    // if (!validator.isLength(data.lastname, {min: 2, max: 30})) {
+    //     errors.lastname = 'Last name must be between 2 and 30 characters';
+    // }
     if (!validator.isLength(data.password, {min: 6, max: 30})) {
         errors.password = 'Password must be between 6 and 30 characters';
     }
