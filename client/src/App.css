@@ -37,3 +37,9 @@ img {
 .form-control::placeholder {
   color: #bbb !important;
 }
+
+.spacer {
+  padding-top: 30px;
+  padding-bottom: 40px;
+
+}
