@@ -7,8 +7,32 @@ import {
     GET_POSTS,
     GET_POST,
     POST_LOADING,
-    DELETE_POST
+    DELETE_POST,
+    ADD_COMMENT,
+    DELETE_COMMENT
   } from './types';
+
+  // Add Post
+export const addPost = (postData, history) => dispatch => {
+  dispatch(clearErrors());
+  axios
+    .post('/api/posts', postData)
+    .then(res => {
+       
+      dispatch({
+        type: ADD_POST,
+        payload: res.data
+      })
+      
+      //history.push('/dashboard');
+    })
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
 
 // Get Posts
 export const getPosts = () => dispatch => {
@@ -28,6 +52,25 @@ export const getPosts = () => dispatch => {
         })
       );
   };
+
+  // Get Post
+export const getPost = id => dispatch => {
+  dispatch(setPostLoading());
+  axios
+    .get(`/api/posts/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_POST,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_POST,
+        payload: null
+      })
+    );
+};
 
   // Delete Post
 export const deletePost = id => dispatch => {
@@ -72,6 +115,44 @@ export const deletePost = id => dispatch => {
         })
       );
   };
+
+  // Add Comment
+export const addComment = (postId, commentData) => dispatch => {
+  dispatch(clearErrors());
+  axios
+    .post(`/api/posts/comment/${postId}`, commentData)
+    .then(res =>
+      dispatch({
+        type: ADD_COMMENT,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+// Delete Comment
+export const deleteComment = (postId, commentId) => dispatch => {
+  axios
+    .delete(`/api/posts/comment/${postId}/${commentId}`)
+    .then(res =>
+      dispatch({
+        type: DELETE_COMMENT,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
 
   // Set loading state
 export const setPostLoading = () => {

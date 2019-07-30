@@ -38,12 +38,12 @@ class PostItem extends Component {
       <div className="card-header">
         <Link to="/profile">
           <img
-            className="rounded-circle d-none d-md-block"
+            className="rounded-circle .img-fluid. max-width: 30% d-none d-md-block img-thumbnail"
             src={post.avatar}
             alt=""
           />
         </Link>
-        <p className="text-center">{post.name}</p>
+        <span className="text-center">{post.name}</span>
       </div>
 
       <div className="card-body mb-3">
@@ -117,8 +117,9 @@ class PostItem extends Component {
   }
 }
 
+
 PostItem.defaultProps = {
-  showActions: true
+  showActions: true 
 };
 
 PostItem.propTypes = {

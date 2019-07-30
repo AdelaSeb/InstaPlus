@@ -20,6 +20,8 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import Profile from './components/profile/Profile';
+import PostForm from './components/posts/PostForm';
+import Post from './components/post/Post';
 
 
 // Check for token
@@ -56,9 +58,14 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/profile" component={Profile} />
             <Switch>
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            </Switch>
-            
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/addPost" component={PostForm} />
+              </Switch>              
+              <Switch>
+                <PrivateRoute exact path="/post/:id" component={Post} />
+              </Switch>            
           </div>
           <Footer /> 
         </div>
