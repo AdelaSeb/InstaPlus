@@ -17,8 +17,8 @@ class Landing extends Component {
                                 Share photos with the world
                                 </p>
                                 
-                                <Link to="/register" class="btn btn-lg btn-light mr-2">Sign Up</Link>
-                                <Link to="/login" class="btn btn-lg btn-light">Login</Link>
+                                <Link to="/register" className="btn btn-lg btn-light mr-2">Sign Up</Link>
+                                <Link to="/login" className="btn btn-lg btn-light">Login</Link>
                             </div>
                         </div>
                     </div>
