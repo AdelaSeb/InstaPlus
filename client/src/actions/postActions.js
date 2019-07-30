@@ -10,6 +10,28 @@ import {
     DELETE_POST
   } from './types';
 
+  // Add Post
+export const addPost = (postData, history) => dispatch => {
+  dispatch(clearErrors());
+  axios
+    .post('/api/posts', postData)
+    .then(res => {
+       
+      dispatch({
+        type: ADD_POST,
+        payload: res.data
+      })
+      
+      //history.push('/dashboard');
+    })
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
 // Get Posts
 export const getPosts = () => dispatch => {
     dispatch(setPostLoading());

@@ -19,6 +19,7 @@ import Footer from './components/layout/Footer';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Dashboard from './components/dashboard/Dashboard';
+import PostForm from './components/posts/PostForm';
 
 
 
@@ -57,6 +58,9 @@ class App extends Component {
             <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
+              <Switch>
+                <PrivateRoute exact path="/addPost" component={PostForm} />
+              </Switch>              
             
           </div>
           <Footer /> 

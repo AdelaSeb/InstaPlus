@@ -117,8 +117,9 @@ class PostItem extends Component {
   }
 }
 
+
 PostItem.defaultProps = {
-  showActions: true
+  showActions: true 
 };
 
 PostItem.propTypes = {
