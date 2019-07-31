@@ -123,7 +123,7 @@ export const addComment = (postId, commentData) => dispatch => {
     .post(`/api/posts/comment/${postId}`, commentData)
     .then(res =>
       dispatch({
-        type: ADD_COMMENT,
+        type: GET_POST,
         payload: res.data
       })
     )
@@ -141,7 +141,7 @@ export const deleteComment = (postId, commentId) => dispatch => {
     .delete(`/api/posts/comment/${postId}/${commentId}`)
     .then(res =>
       dispatch({
-        type: DELETE_COMMENT,
+        type: GET_POST,
         payload: res.data
       })
     )
