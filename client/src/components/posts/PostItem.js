@@ -37,7 +37,7 @@ class PostItem extends Component {
       
       <div className="card-header">
       <div className="row">
-          <div className="col-md-3">        
+          <div className="col-md-2">        
               <Link to="/profile">
                 <img
                   className="rounded-circle latest-profiles-img d-none d-md-block"
@@ -46,9 +46,19 @@ class PostItem extends Component {
                 />
               </Link>
           </div>
-          <div className="col-md-9"> 
-             <span> {post.name}</span>
+          <div className="col-md-8"> 
+             <span className="text-left"> {post.name}</span>
           </div>
+          <div className="col-md-2 text-right"> 
+                {post.user === auth.user.id ? (
+                  <button
+                    onClick={this.onDeleteClick.bind(this, post._id)}
+                    type="button"
+                    className="btn btn-danger mr-1" >
+                    <i class="fas fa-trash-alt"></i>
+                    </button>
+                ) : null}          
+          </div>          
         </div>
       </div>
 
@@ -95,17 +105,8 @@ class PostItem extends Component {
                   <i className="text-secondary fas fa-thumbs-down" />
                 </button>
                 <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
-                  Comments
+                  + Comments
                 </Link>
-                {post.user === auth.user.id ? (
-                  <button
-                    onClick={this.onDeleteClick.bind(this, post._id)}
-                    type="button"
-                    className="btn btn-danger mr-1"
-                  >
-                    <i className="fas fa-times" />
-                  </button>
-                ) : null}
               </span>
             ) : null}
           </div>
