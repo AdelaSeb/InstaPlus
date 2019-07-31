@@ -3,7 +3,9 @@ import {
   GET_POSTS,
   GET_POST,
   DELETE_POST,
-  POST_LOADING
+  POST_LOADING,
+  ADD_COMMENT,
+  DELETE_COMMENT
 } from '../actions/types';
 
 const initialState = {
@@ -41,7 +43,7 @@ export default function(state = initialState, action) {
         ...state,
         posts: state.posts.filter(post => post._id !== action.payload)
       };
-    default:
+     default:
       return state;
   }
 }

@@ -76,7 +76,11 @@ class PostItem extends Component {
           <div className="row">
           <div className="col-md-12">
             <p className="card-title">{post.caption}</p>
-            <p className="card-text">{post.location}, {post.country}</p>
+            <span className="card-text">{post.location} </span>
+            { post.location && post.country && <span>, </span>}
+    
+            <span className="card-text">{post.country}</span>
+            
             </div>
             </div>
      
