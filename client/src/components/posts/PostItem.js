@@ -36,19 +36,23 @@ class PostItem extends Component {
       <div className="card">
       
       <div className="card-header">
-        <Link to="/profile">
-          <img
-            className="rounded-circle .img-fluid. max-width: 30% d-none d-md-block img-thumbnail"
-            src={post.avatar}
-            alt=""
-          />
-        </Link>
-        <span className="text-center">{post.name}</span>
+      <div className="row">
+          <div className="col-md-3">        
+              <Link to="/profile">
+                <img
+                  className="rounded-circle latest-profiles-img d-none d-md-block"
+                  src={post.avatar}
+                  alt=""
+                />
+              </Link>
+          </div>
+          <div className="col-md-9"> 
+             <span> {post.name}</span>
+          </div>
+        </div>
       </div>
 
       <div className="card-body mb-3">
-
-
       <div className="row">
           <div className="col-md-12">
           <img
