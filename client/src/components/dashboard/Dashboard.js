@@ -1,27 +1,25 @@
-import React, { Fragment } from 'react'
-import { connect } from 'react-redux'
-// import Post 
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Posts from '../posts/Posts';
 
-const Feed = ({ feed }) => {
-  let len = feed.length
- //  connect posts to display
 
-  let nothingMssg =
-    "Looks like you're new, follow people to fill up your homepage or post from above!"
+class Dashboard extends Component {
 
-  return (
-    <Fragment>
-      <div className="posts_div" style={{ marginTop: len == 0 ? 10 : 0 }}>
-        <MapPosts posts={map_feed} nothingMssg={nothingMssg} />
+  render() {
+    return (
+      <div className="feed">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <Posts />
+            </div>
+          </div>
+        </div>
       </div>
-
-      {len != 0 && <End />}
-    </Fragment>
-  )
+    );
+  }
 }
 
-const mapStateToProps = state => ({
-  //feed: state.Post.feed,
-})
+export default Dashboard;
 
-export default connect(mapStateToProps)(Feed)
