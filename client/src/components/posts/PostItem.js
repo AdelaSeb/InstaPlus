@@ -55,7 +55,7 @@ class PostItem extends Component {
                     onClick={this.onDeleteClick.bind(this, post._id)}
                     type="button"
                     className="btn btn-danger mr-1" >
-                    <i class="fas fa-trash-alt"></i>
+                    <i className="fas fa-trash-alt"></i>
                     </button>
                 ) : null}          
           </div>          

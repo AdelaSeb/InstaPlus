@@ -5,13 +5,15 @@ import {
   DELETE_POST,
   POST_LOADING,
   ADD_COMMENT,
-  DELETE_COMMENT
+  DELETE_COMMENT,
+  CLEAR_ERRORS
 } from '../actions/types';
 
 const initialState = {
   posts: [],
   post: {},
-  loading: false
+  loading: false,
+  errors:{}
 };
 
 export default function(state = initialState, action) {
@@ -43,6 +45,11 @@ export default function(state = initialState, action) {
         ...state,
         posts: state.posts.filter(post => post._id !== action.payload)
       };
+      case CLEAR_ERRORS:
+        return {
+          ...state,
+          errors:{}
+        };      
      default:
       return state;
   }

@@ -27,6 +27,8 @@ app.get('/', (req, res) => res.send('Hello'));
 app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
+//app.use('/api/posts/feed', posts);
+//app.use('/api/posts/:id', posts);
 
 const port = 7000;
 app.listen(port,()=>console.log(`server is running on port ${port}`));
