@@ -11,7 +11,7 @@ module.exports = function validatePostInput(data) {
     errors.photo = 'Picture is required';
   }
 
-  if (!Validator.isLength(data.caption, { min: 5, max: 300 })) {
+  if (!Validator.isEmpty(data.caption) && !Validator.isLength(data.caption, { min: 5, max: 300 })) {
     errors.caption = 'Caption must be between 5 and 300 characters';
   }
 

@@ -70,10 +70,15 @@ class PostForm extends Component {
         <div className="card card-info">
           <div className="card-header bg-info text-white">New post</div>
           <div className="card-body">
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit} noValidate>
               <div className="form-group">
                   <input type="text" className={classnames('form-control form-control-lg', {'is-invalid': errors.photo})} 
                   placeholder="Upload Photo(url)" name="photo" value={this.state.photo} onChange={this.onChange} required /> 
+                  {errors.photo && (
+                      <div className="invalid-feedback">
+                          {errors.photo}
+                      </div>
+                  )}                  
               </div>  
 
               <div className="form-group">
