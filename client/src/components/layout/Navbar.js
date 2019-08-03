@@ -33,11 +33,11 @@ class Navbar extends Component {
                         />
                     </form>
                 </div>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link className="nav-link" to="/post">
-                  Upload photo
+                 Upload photo
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link className="nav-link" to="/profile">
                 <img
