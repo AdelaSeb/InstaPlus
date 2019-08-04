@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Spinner from '../common/Spinner';
 import { getProfileByHandle, deleteAccount } from '../../actions/profileActions';
 import Posts from '../posts/Posts';
+import App from '../../App.css'
 
 
 class Profile extends Component {
@@ -39,37 +40,52 @@ class Profile extends Component {
         if (Object.keys(profile).length > 0) {
           profileContent = (
             <div className="container">
-              <div className="row">
+              <div className="row bkground">
                 <div className="col-md-2">
+                  <div className="spacerLine"></div>
                     <img
                       className="rounded-circle"
                       src={profile.user.avatar}
                       alt=""
                     />
-                <div className="col">
-                    <h1 className="display-4 text-center">{profile.user.name}</h1>
-                    <Link to="/edit-profile" className="btn btn-outline-danger waves-effect">
-                      <i className="fas fa-user-circle mr-1" /> Edit Profile
-                    </Link>
-                    <button
-                      onClick={this.onDeleteClick.bind(this)}
-                      className="btn btn-danger"
-                    >
-                      Delete My Account
-                    </button>                        
+                    <h1 className="display-4 text-center">{profile.user.name}</h1> 
+                  </div>
+                  <div className="col-md-1">
+
+                  </div>
+                <div className="col-md-6">
+                    <div className="spacerMin"></div>
+                    
                     <h3 className="text-left">Bio</h3>
                     <span>{profile.bio}</span>
                     <h3 className="text-left">Website</h3>
                     <span>{profile.website}</span>
+                    <div className="spacerMin"></div>
                     {/* <h3 className="text-left">Number of posts</h3>
                     <span>{profile.numOfPosts}</span>
                     <h3 className="text-left">Following</h3>
                     <span>{profile.following}</span>
                     <h3 className="text-left">Followers</h3>
                     <span>{profile.followers}</span> */}
-                </div>              
-              </div>
+                </div> 
+                <div className="col-md-3">
+                <div className="spacerMin"></div>
+                <div>
+                <Link to="/edit-profile" className="btn btn-outline-danger waves-effect">
+                      <i className="fas fa-user-circle mr-1" /> Edit Profile
+                    </Link>
+                    </div>
+                    <div className="spacerMin"></div>
+                    <button
+                      onClick={this.onDeleteClick.bind(this)}
+                      className="btn btn-danger"
+                    >
+                      Delete My Account
+                    </button>                    
+                  </div>             
+              
             </div>
+            <div className="spacerMin"></div>
               <Posts />
             </div>
           );
