@@ -53,6 +53,32 @@ export const getPosts = () => dispatch => {
       );
   };
 
+
+  // Get Feed
+export const getFeed = () => dispatch => {
+  console.log("In getFeed");
+  dispatch(setPostLoading());
+  axios
+    .get('/api/posts/feed')
+    .then(res =>
+      dispatch({
+        type: GET_POSTS,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        /** 
+        type: GET_POSTS,
+        payload: null
+        */
+       type: GET_ERRORS,
+       payload: err.response.data
+      })
+    );
+};
+
+
   // Get Post
 export const getPost = id => dispatch => {
   dispatch(setPostLoading());
@@ -94,7 +120,7 @@ export const deletePost = id => dispatch => {
   export const addLike = id => dispatch => {
     axios
       .post(`/api/posts/like/${id}`)
-      .then(res => dispatch(getPosts()))
+      .then(res => dispatch(getFeed()))
       .catch(err =>
         dispatch({
           type: GET_ERRORS,
@@ -107,7 +133,7 @@ export const deletePost = id => dispatch => {
   export const removeLike = id => dispatch => {
     axios
       .post(`/api/posts/unlike/${id}`)
-      .then(res => dispatch(getPosts()))
+      .then(res => dispatch(getFeed()))
       .catch(err =>
         dispatch({
           type: GET_ERRORS,

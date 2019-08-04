@@ -55,7 +55,7 @@ class PostItem extends Component {
                     onClick={this.onDeleteClick.bind(this, post._id)}
                     type="button"
                     className="btn btn-danger mr-1" >
-                    <i class="fas fa-trash-alt"></i>
+                    <i className="fas fa-trash-alt"></i>
                     </button>
                 ) : null}          
           </div>          
@@ -68,6 +68,7 @@ class PostItem extends Component {
           <img
             src={post.photo}
             alt=""
+            options={{ width: 200 }}
           />            
           </div>
             </div> 
@@ -96,7 +97,7 @@ class PostItem extends Component {
                 >
                   <i
                     className={classnames('fas fa-thumbs-up', {
-                      'text-info': this.findUserLike(post.likes)
+                      'text-alert': this.findUserLike(post.likes)
                     })}
                   />
                   <span className="badge badge-light">{post.likes.length}</span>
@@ -108,7 +109,7 @@ class PostItem extends Component {
                 >
                   <i className="text-secondary fas fa-thumbs-down" />
                 </button>
-                <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
+                <Link to={`/post/${post._id}`} className="btn btn-outline-danger waves-effect mr-1">
                   + Comments
                 </Link>
               </span>

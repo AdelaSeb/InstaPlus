@@ -18,7 +18,9 @@ class Navbar extends Component {
         const { isAuthenticated, user } = this.props.auth;
 
         const authLinks = (
-            <ul className="navbar-nav ml-auto">
+            <ul className="navbar-nav mr-auto">
+              <Link className="navbar-brand" to="/dashboard">InstaPlus</Link>
+              <Link className="nav-link" to="/addPost">Add Post</Link>
               {/* <li className="nav-item">
                 <Link className="nav-link" to="/feed">
                   Post Feed
@@ -33,11 +35,13 @@ class Navbar extends Component {
                         />
                     </form>
                 </div> */}
-              {/* <li className="nav-item">
-                <Link className="nav-link" to="/post">
-                 Upload photo
-                </Link>
-              </li> */}
+
+                {/* <li className="nav-item">
+                  <Link className="nav-link" to="/dashboard">
+                    Feed
+                  </Link>
+                </li> */}
+
               <li className="nav-item">
                 <Link className="nav-link" to="/profile">
                 <img
@@ -50,7 +54,7 @@ class Navbar extends Component {
                     Profile
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className="nav-item logout">
                 <a
                   href=""
                   onClick={this.onLogoutClick.bind(this)}
@@ -63,7 +67,12 @@ class Navbar extends Component {
           );
 
         const guestLinks = (
-            <ul className="navbar-nav ml-auto">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                    <Link className="navbar-brand" to="/">
+                      InstaPlus
+                    </Link>
+                </li>
                 <li className="nav-item">
                     <Link className="nav-link" to="/register">
                         Sign Up
@@ -79,10 +88,8 @@ class Navbar extends Component {
         );
 
         return (
-            <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+            <nav className="navbar navbar-expand-sm navbar-light mb-4">
                 <div className="container">
-                    <Link className="navbar-brand" to="/">InstaPlus</Link>
-                    {/* <Link className="nav-link" to="/addPost">Add Post</Link> */}
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
                     <span className="navbar-toggler-icon"></span>
                     </button>

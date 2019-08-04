@@ -68,12 +68,17 @@ class PostForm extends Component {
       <div>
       <div className="post-form mb-3">
         <div className="card card-info">
-          <div className="card-header bg-info text-white">New post</div>
+          <div className="card-header bg-danger text-white">New post</div>
           <div className="card-body">
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit} noValidate>
               <div className="form-group">
                   <input type="text" className={classnames('form-control form-control-lg', {'is-invalid': errors.photo})} 
                   placeholder="Upload Photo(url)" name="photo" value={this.state.photo} onChange={this.onChange} required /> 
+                  {errors.photo && (
+                      <div className="invalid-feedback">
+                          {errors.photo}
+                      </div>
+                  )}                  
               </div>  
 
               <div className="form-group">
@@ -96,7 +101,7 @@ class PostForm extends Component {
                 placeholder="Country" name="country" value={this.state.country} onChange={this.onChange} />                                 
               
               </div>
-              <button type="submit" className="btn btn-dark">
+              <button type="submit" className="btn btn-outline-danger waves-effect">
                 Add Post
               </button>
             </form>
