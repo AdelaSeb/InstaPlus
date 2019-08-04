@@ -262,11 +262,11 @@ router.delete(
 
         //Check if user is authorized to delete comment
         // && (post.comments.filter(comment => comment._id.toString() === req.params.comment_id).length > 0).filter(comm => comment.user.toString() !== req.user.id)
-        if (post.user.toString() !== req.user.id) {
+        /** if (post.user.toString() !== req.user.id) {
           return res.status(404).json({
             unauthorized: "User not authorized to delete the comment"
           });
-        }
+        }*/
 
         // Get remove index
         const removeIndex = post.comments
