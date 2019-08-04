@@ -24,7 +24,7 @@ class Navbar extends Component {
                   Post Feed
                 </Link>
               </li> */}
-                <div className="searchForm">
+                {/* <div className="searchForm">
                     <form>
                         <input
                             placeholder="Search"
@@ -32,10 +32,10 @@ class Navbar extends Component {
                             // onChange={this.handleInputChange}
                         />
                     </form>
-                </div>
+                </div> */}
                 <li className="nav-item">
                   <Link className="nav-link" to="/dashboard">
-                    Dashboard
+                    Feed
                   </Link>
                 </li>
               <li className="nav-item">

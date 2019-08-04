@@ -39,7 +39,7 @@ class Profile extends Component {
           profileContent = (
             <div>
               <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-3">
                     <img
                       className="rounded-circle"
                       src={profile.user.avatar}
