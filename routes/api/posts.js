@@ -34,6 +34,16 @@ router.get(
 // @desc    Get posts of all folks a user is following
 // @access  Public
 router.get(
+  '/feed', 
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+  Post.find()
+    .sort({ date: -1 })
+    .then(posts => res.json(posts))
+    .catch(err => res.status(404).json({ nopostsfound: 'No posts found' }));
+});
+/* 
+router.get(
   "/feed",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
@@ -55,7 +65,7 @@ router.get(
     });
   }
 );
-
+ */
 async function getUserPosts(user) {
   console.log("Processing: " + user);
   return Post.find({ user: user.user })
